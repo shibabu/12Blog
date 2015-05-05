@@ -7,8 +7,10 @@
 
   <p class="date">
     Submitted <%= time_ago_in_words @post.created_at %> &nbsp;&nbsp;
-    <%= link_to 'Edit', edit_post_path(@post), class: 'button' %> |
-    <%= link_to 'Delete', post_path(@post), method: :delete, data: {confirm: 'Are you sure?'}, class: 'button' %>
+    <% if user_signed_in? %>
+      <%= link_to 'Edit', edit_post_path(@post), class: 'button' %> |
+      <%= link_to 'Delete', post_path(@post), method: :delete, data: {confirm: 'Are you sure?'}, class: 'button' %>
+    <% end %>
   </p>
 
   <p class="body"><%= @post.body %></p>
